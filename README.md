@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Devender Teja Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React portfolio for **Byrugonda Devender Teja**, showcasing filmmaking and video editing work from Hyderabad, India.
+
+## Features
+
+- Separate filmmaker and video editor portfolio views
+- Cinematic dark interface with amber and light-blue accent themes
+- Responsive layout for desktop and mobile screens
+- Video lightbox supporting YouTube, Google Drive, and direct video files
+- Reduced-motion support for visitors who prefer less animation
+
+## Getting Started
+
+### Requirements
+
+- Node.js 18 or newer
+- npm
+
+### Install and run
+
+```bash
+npm install
+npm start
+```
+
+The development site opens at `http://localhost:3000`.
 
 ## Available Scripts
 
-In the project directory, you can run:
+```bash
+npm start       # Start the development server
+npm run build   # Create a production build
+npm test        # Run the test suite
+```
 
-### `npm start`
+## Customizing the Portfolio
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Most portfolio content is configured near the top of `src/App.js`:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- `FILM_PROJECTS`: featured filmmaking projects
+- `EDIT_PROJECTS`: featured editing projects
+- `SAMPLE_PROJECTS`: additional editing samples
+- `IMAGES`: optional background images for the hub, hero, work, about, and contact sections
 
-### `npm test`
+Add image files to `public/thumbnails/` and reference them with paths such as `/thumbnails/project.jpg`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Each project can include:
 
-### `npm run build`
+```js
+{
+	title: "Project title",
+	tag: "Short Film",
+	tc: "00:05:30",
+	thumbnail: "/thumbnails/project.jpg",
+	desc: "A short description of the project.",
+	video: "https://youtu.be/example"
+}
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The `video` field accepts YouTube links, Google Drive file links, or direct `.mp4`, `.webm`, and `.mov` URLs.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```text
+public/                 Static assets and thumbnails
+src/App.js              Portfolio views, content, and shared styles
+src/index.js            React application entry point
+src/index.css           Global stylesheet entry point
+```
 
-### `npm run eject`
+## Deployment
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Create the optimized production files with:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Deploy the generated `build/` directory to a static hosting provider such as Netlify, Vercel, GitHub Pages, or any web server that supports single-page applications.

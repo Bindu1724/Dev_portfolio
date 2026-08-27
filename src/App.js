@@ -12,10 +12,9 @@ import {FaInstagram, FaCamera} from "react-icons/fa";
    ============================================================ */
 
 const FILM_PROJECTS = [
-  { title: "Undertow", tc: "00:07:42", tag: "Short Film", desc: "Two siblings clear out their late father's workshop over one long afternoon.", video: "" },
-  { title: "Concrete Season", tc: "00:11:15", tag: "Documentary", desc: "A season inside an independent skatepark, told through the people who built it.", video: "" },
-  { title: "Paper Boats", tc: "00:09:04", tag: "Short Film", desc: "Shot on 16mm — a tight three-act story about letting go.", video: "" },
-  { title: "Still, Water", tc: "00:14:50", tag: "Short Film", desc: "A meditative look at a fishing town's last working harbour.", video: "" },
+  { title: "Unsaid", tc: "00:00:49", tag: "Promo", thumbnail: "", desc: "UNSAID is about love, regret, and the words we never found the courage to say. Sometimes, the past doesn’t stay behind… it keeps finding its way back.", video: "https://youtu.be/KVz92ECxSXM?si=QideMHZ634c3AkMq" },
+  { title: "Unsaid", tc: "00:01:03", tag: "Trailer", thumbnail: "", desc: "UNSAID is about love, regret, and the words we never found the courage to say. Sometimes, the past doesn’t stay behind… it keeps finding its way back.", video: "https://youtu.be/UC7OlbJkOHI?si=nyiUMhUZ-10qrJxR" },
+  { title: "Unsaid", tc: "00:21:25", tag: "Short Film", thumbnail: "", desc: "UNSAID is about love, regret, and the words we never found the courage to say. Sometimes, the past doesn’t stay behind… it keeps finding its way back.", video: "https://youtu.be/jBTIGMK4hYI?si=seKssqJe91LpQ-Wr" }
 ];
 
 // `video` accepts:
@@ -24,17 +23,20 @@ const FILM_PROJECTS = [
 //   - a direct video file URL ending in .mp4 / .webm / .mov
 // Leave it as "" to keep the placeholder play icon with no click action.
 const EDIT_PROJECTS = [
-  { title: "Nightline Radio", tc: "00:02:30", tag: "Brand Film", desc: "Edit + colour for an independent radio station's anniversary film.", video: "" },
-  { title: "Highline Collective", tc: "00:03:12", tag: "Event Recap", desc: "Fast-cut sizzle reel for a three-day design conference.", video: "" },
-  { title: "Undertow", tc: "00:07:42", tag: "Short Film", desc: "Full post: assembly through final mix, picture lock in eleven passes.", video: "" },
-  { title: "Aperture — EP", tc: "00:04:44", tag: "Music Video", desc: "Performance-driven edit cut to a single unbroken emotional arc.", video: "" },
-  { title: "Project 05", tc: "00:00:00", tag: "Category", desc: "Short description of this edit.", video: "" },
-  { title: "Project 06", tc: "00:00:00", tag: "Category", desc: "Short description of this edit.", video: "" },
-  { title: "Project 07", tc: "00:00:00", tag: "Category", desc: "Short description of this edit.", video: "" },
-  { title: "Project 08", tc: "00:00:00", tag: "Category", desc: "Short description of this edit.", video: "" },
-  { title: "Project 09", tc: "00:00:00", tag: "Category", desc: "Short description of this edit.", video: "" },
-  { title: "Project 10", tc: "00:00:00", tag: "Category", desc: "Short description of this edit.", video: "" },
+  { tag: "Long video", thumbnail: "", video: "https://youtu.be/18dY20PUkGg?si=C2NiBb_r7b7W-ywk" },
+  { tag: "Long Video", thumbnail: "", video: "https://youtu.be/8pFiPAyZXHw?si=T6fa4fb_SCtAlwB4" },
+  { tag: "Short Video", thumbnail: "/thumbnails/3.jpeg", video: "https://drive.google.com/file/d/1glrssE6fBVsT6voU9xdhHQZO9ttFc8oO/view?usp=drive_link" },
+  { tag: "Short Video", thumbnail: "/thumbnails/4.jpeg", video: "https://drive.google.com/file/d/1FXF2KtbyoZCqiwcUwMFHySdK_0znwt0X/view?usp=drive_link" },
+  { tag: "Short Video", thumbnail: "/thumbnails/5.jpeg", video: "https://drive.google.com/file/d/1drjlStcO6YD96EkGDHYY8LPV8T-EXou6/view?usp=drive_link" }
+  
 ];
+
+const SAMPLE_PROJECTS = [
+  { tag: "Long Video", thumbnail: "", video: "https://drive.google.com/file/d/1ZgiaKkvi_w7x9SZBpLx0bdOG2wdIlRzK/view?usp=drive_link" },
+  { tag: "Short Video", thumbnail: "", video: "https://drive.google.com/file/d/1Vv06k1p-aPjKVNfeqIj7IrbnuCmastbX/view?usp=drive_link" },
+  { tag: "Short Video", thumbnail: "", video: "https://drive.google.com/file/d/1cy6CrIn5CCAqcAna7kbXFOPP3xsHPsIN/view?usp=drive_link" },
+  { tag: "Short Video", thumbnail: "/thumbnails/ai_rag.jpeg", video: "https://drive.google.com/file/d/1m434ALfuxfrKrJRlEnMva9sbiAGqevEK/view?usp=drive_link" },
+]
 
 // Paste an image URL between the quotes to give that section a background
 // image (hosted somewhere — Drive, Imgur, your own site). Leave "" to keep
@@ -66,7 +68,7 @@ const STYLES = `
   .pf-root{
     --bg:#0a0a0b; --bg-alt:#131315; --line:#232325;
     --text:#ede9e1; --text-muted:#8a8781; --text-dim:#4f4d48;
-    --amber:#e3a458; --ice:#7fb8c9;
+    --amber:#ffb84d; --ice:#69d9f7;
     font-family:'Work Sans', sans-serif;
     background:var(--bg); color:var(--text);
     position:relative; min-height:100vh; overflow-x:hidden;
@@ -79,22 +81,22 @@ const STYLES = `
 
   .pf-root .film{
     background:
-      radial-gradient(1300px 900px at 10% -10%, rgba(227,164,88,0.26), transparent 52%),
-      radial-gradient(1000px 800px at 95% 15%, rgba(227,164,88,0.10), transparent 50%),
-      radial-gradient(1100px 800px at 90% 110%, rgba(193,68,60,0.16), transparent 55%),
+      radial-gradient(1300px 900px at 10% -10%, rgba(255,159,28,0.42), transparent 52%),
+      radial-gradient(1000px 800px at 95% 15%, rgba(255,159,28,0.18), transparent 50%),
+      radial-gradient(1100px 800px at 90% 110%, rgba(193,68,60,0.22), transparent 55%),
       var(--bg);
   }
   .pf-root .edit{
     background:
-      radial-gradient(1300px 900px at 90% -10%, rgba(127,184,201,0.26), transparent 52%),
-      radial-gradient(1000px 800px at 5% 15%, rgba(127,184,201,0.10), transparent 50%),
-      radial-gradient(1100px 800px at 10% 110%, rgba(127,184,201,0.14), transparent 55%),
+      radial-gradient(1300px 900px at 90% -10%, rgba(53,201,244,0.42), transparent 52%),
+      radial-gradient(1000px 800px at 5% 15%, rgba(53,201,244,0.18), transparent 50%),
+      radial-gradient(1100px 800px at 10% 110%, rgba(53,201,244,0.22), transparent 55%),
       var(--bg);
   }
   .pf-root .pf-hub{
     background:
-      radial-gradient(1100px 800px at 20% 0%, rgba(227,164,88,0.13), transparent 52%),
-      radial-gradient(1100px 800px at 80% 0%, rgba(127,184,201,0.13), transparent 52%),
+      radial-gradient(1100px 800px at 20% 0%, rgba(255,159,28,0.28), transparent 52%),
+      radial-gradient(1100px 800px at 80% 0%, rgba(53,201,244,0.28), transparent 52%),
       var(--bg);
   }
 
@@ -170,7 +172,7 @@ const STYLES = `
 
   /* -------- hub -------- */
   .pf-hub{ min-height:100vh; display:flex; flex-direction:column; }
-  .pf-hub .hub-top{ padding:56px 5vw 26px; text-align:center; }
+  .pf-hub .hub-top{ padding:clamp(96px,12vh,140px) 5vw clamp(32px,4vh,52px); text-align:center; }
   .pf-hub .hub-eyebrow{ justify-content:center; }
   .pf-hub .hub-eyebrow{ font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-dim); display:flex; align-items:center; gap:10px; }
   .pf-hub .hub-eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--amber); box-shadow:0 0 8px var(--amber); }
@@ -181,7 +183,7 @@ const STYLES = `
 
   .hub-panel{
     position:relative; display:flex; flex-direction:column; justify-content:flex-end;
-    padding:48px 5vw; cursor:pointer; overflow:hidden;
+    padding:clamp(64px,7vw,96px) 5vw; cursor:pointer; overflow:hidden;
     border-top:1px solid var(--line);
     transition:flex 0.5s ease;
   }
@@ -201,8 +203,8 @@ const STYLES = `
   .hub-panel .glow{
     position:absolute; inset:0; opacity:0; transition:opacity 0.5s ease;
   }
-  .hub-panel.film .glow{ background:radial-gradient(circle at 30% 30%, rgba(227,164,88,0.14), transparent 60%); }
-  .hub-panel.edit .glow{ background:radial-gradient(circle at 70% 30%, rgba(127,184,201,0.14), transparent 60%); }
+  .hub-panel.film .glow{ background:radial-gradient(circle at 30% 30%, rgba(255,159,28,0.30), transparent 60%); }
+  .hub-panel.edit .glow{ background:radial-gradient(circle at 70% 30%, rgba(53,201,244,0.30), transparent 60%); }
   .hub-panel:hover .glow{ opacity:1; }
 
   .hub-panel .tag{ font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:14px; position:relative; z-index:1; display:flex; align-items:center; gap:8px; }
@@ -259,6 +261,8 @@ const STYLES = `
   .film-card{ background:var(--bg); padding:34px; cursor:pointer; transition:background 0.3s ease; }
   .film-card:hover{ background:var(--bg-alt); }
   .film-frame{ aspect-ratio:16/9; border:1px solid var(--line); position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; transition:transform 0.5s ease; }
+  .film-frame .thumbnail, .edit-frame .thumbnail{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.72; transition:opacity 0.3s ease, transform 0.5s ease; }
+  .film-card:hover .thumbnail, .edit-card:hover .thumbnail{ opacity:0.9; transform:scale(1.03); }
   .film-card:hover .film-frame{ transform:scale(1.02); }
   .film-frame::after{ content:''; position:absolute; inset:0; background:repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 8px); }
   .film-frame .play{ z-index:1; width:46px; height:46px; border-radius:50%; border:1px solid var(--text-dim); display:flex; align-items:center; justify-content:center; color:var(--text-muted); transition:all 0.3s ease; }
@@ -325,6 +329,7 @@ const STYLES = `
   .edit-card h3{ font-size:1rem; text-transform:uppercase; }
   .edit-card .tag{ font-size:0.62rem; color:var(--ice); text-transform:uppercase; letter-spacing:0.08em; white-space:nowrap; }
   .edit-card .desc{ color:var(--text-muted); font-size:0.84rem; }
+  .sample-work-heading{ margin-top:clamp(64px,8vw,112px) !important; margin-bottom:8px !important; }
 
   /* -------- contact (shared shape, accent differs) -------- */
   .pf-contact h2{ font-size:clamp(2.2rem,7vw,4.6rem); text-transform:uppercase; line-height:1; margin-top:16px; }
@@ -337,6 +342,11 @@ const STYLES = `
   .pf-contact .col .k{ font-family:'JetBrains Mono',monospace; font-size:0.66rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:8px; }
   .pf-contact .col a, .pf-contact .col span{ display:flex; align-items:center; gap:7px; color:var(--text-muted); font-size:0.92rem; padding:3px 0; transition:color 0.2s ease; }
   .pf-contact .col a:hover{ color:var(--text); }
+  .pf-contact .instagram-link{
+    color:#ff4f81; font-weight:500; text-shadow:0 0 14px rgba(255,79,129,0.35);
+    transition:color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
+  }
+  .pf-contact .instagram-link:hover{ color:#ff8fb0; transform:translateX(4px); text-shadow:0 0 18px rgba(255,143,176,0.6); }
 
   .pf-footer{ padding:26px 5vw; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-family:'JetBrains Mono',monospace; font-size:0.66rem; color:var(--text-dim); }
 
@@ -451,6 +461,32 @@ function toEmbedUrl(url) {
   const drive = url.match(/drive\.google\.com\/file\/d\/([\w-]+)/) || url.match(/[?&]id=([\w-]+)/);
   if (drive && url.includes("drive.google.com")) return { type: "embed", src: `https://drive.google.com/file/d/${drive[1]}/preview` };
   return { type: "embed", src: url };
+}
+
+function getThumbnailUrl(url) {
+  if (!url) return null;
+  const yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+  if (yt) return `https://i.ytimg.com/vi/${yt[1]}/maxresdefault.jpg`;
+  const drive = url.match(/drive\.google\.com\/file\/d\/([\w-]+)/) || url.match(/[?&]id=([\w-]+)/);
+  if (drive && url.includes("drive.google.com")) return `https://drive.google.com/thumbnail?id=${drive[1]}&sz=w1200`;
+  return null;
+}
+
+function VideoThumbnail({ project }) {
+  const thumbnail = project.thumbnail || getThumbnailUrl(project.video);
+  if (!thumbnail) return null;
+  const fallback = !project.thumbnail && thumbnail.includes("i.ytimg.com") ? thumbnail.replace("maxresdefault", "hqdefault") : null;
+  return (
+    <img
+      className="thumbnail"
+      src={thumbnail}
+      alt={`${project.title || project.tag || "Video"} thumbnail`}
+      onError={fallback ? (event) => {
+        event.currentTarget.onerror = null;
+        event.currentTarget.src = fallback;
+      } : undefined}
+    />
+  );
 }
 
 function Lightbox({ project, onClose }) {
@@ -605,6 +641,7 @@ function FilmSite({ goHub, goEdit }) {
               style={{ cursor: p.video ? "pointer" : "default" }}
             >
               <div className="film-frame">
+                <VideoThumbnail project={p} />
                 <div className="play"><Play size={16} /></div>
                 <div className="badge mono">{p.tc}</div>
               </div>
@@ -630,8 +667,7 @@ function FilmSite({ goHub, goEdit }) {
         <h2>Let's Make<br />Something.</h2>
         <a className="email mono" href="mailto:deventej24@gmail.com">deventej24@gmail.com</a>
         <div className="row">
-          <div className="col"><div className="k">Reel</div><a href=" "><Play size={15} /> Watch full reel ↗</a></div>
-          <div className="col"><div className="k">Elsewhere</div><a href=" "><FaInstagram size={15} /> Instagram ↗</a></div>
+          <div className="col"><div className="k">Elsewhere</div><a className="instagram-link" href="https://www.instagram.com/deven24_/"><FaInstagram size={15} /> Instagram ↗</a></div>
           <div className="col"><div className="k">Based in</div><span><MapPin size={15} /> Hyderabad, India</span></div>
         </div>
       </section>
@@ -710,7 +746,7 @@ function EditSite({ goHub, goFilm }) {
       >
         <FloatingIcons items={EDIT_ICONS_WORK} />
         <div className="pf-eyebrow"><span className="dot" /> <Layers size={15} /> Selected Cuts</div>
-        <h2 style={{ fontSize: "clamp(1.8rem,3vw,2.6rem)", textTransform: "uppercase", marginBottom: 8 }}>Editing</h2>
+        <h3 style={{ fontSize: "clamp(1.8rem,3vw,2.6rem)", textTransform: "uppercase", marginBottom: 8 }}>Work</h3>
         <div className="edit-grid">
           {EDIT_PROJECTS.map((p, i) => (
             <div
@@ -720,6 +756,30 @@ function EditSite({ goHub, goFilm }) {
               style={{ cursor: p.video ? "pointer" : "default" }}
             >
               <div className="edit-frame">
+                <VideoThumbnail project={p} />
+                <div className="play"><Play size={15} /></div>
+                <div className="badge mono">{p.tc}</div>
+              </div>
+              <div className="meta">
+                <h3>{p.title}</h3>
+                <span className="tag mono">{p.tag}</span>
+              </div>
+              <p className="desc">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <h3 className="sample-work-heading" style={{ fontSize: "clamp(1.8rem,3vw,2.6rem)", textTransform: "uppercase" }}>Sample Work</h3>
+        <div className="edit-grid">
+          {SAMPLE_PROJECTS.map((p, i) => (
+            <div
+              className="edit-card"
+              key={i}
+              onClick={() => p.video && setActiveVideo(p)}
+              style={{ cursor: p.video ? "pointer" : "default" }}
+            >
+              <div className="edit-frame">
+                <VideoThumbnail project={p} />
                 <div className="play"><Play size={15} /></div>
                 <div className="badge mono">{p.tc}</div>
               </div>
@@ -745,8 +805,7 @@ function EditSite({ goHub, goFilm }) {
         <h2>Send the<br />Footage.</h2>
         <a className="email mono" href="mailto:deventej24@gmail.com">deventej24@gmail.com</a>
         <div className="row">
-          <div className="col"><div className="k">Reel</div><a href=" "><Play size={15} /> Watch edit reel ↗</a></div>
-          <div className="col"><div className="k">Elsewhere</div><a href=" "><FaInstagram size={15} /> Instagram ↗</a></div>
+          <div className="col"><div className="k">Elsewhere</div><a className="instagram-link" href="https://www.instagram.com/deven24_/"><FaInstagram size={15} /> Instagram ↗</a></div>
           <div className="col"><div className="k">Based in</div><span><MapPin size={15} /> Hyderabad, India</span></div>
         </div>
       </section>
