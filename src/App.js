@@ -82,23 +82,25 @@ const STYLES = `
   .pf-root .film{
     background:
       radial-gradient(1300px 900px at 10% -10%, rgba(255,159,28,0.42), transparent 52%),
-      radial-gradient(1000px 800px at 95% 15%, rgba(255,159,28,0.18), transparent 50%),
+      radial-gradient(1000px 800px at 95% 15%, rgba(227,164,88,0.10), transparent 50%),
       radial-gradient(1100px 800px at 90% 110%, rgba(193,68,60,0.22), transparent 55%),
       var(--bg);
   }
   .pf-root .edit{
     background:
       radial-gradient(1300px 900px at 90% -10%, rgba(53,201,244,0.42), transparent 52%),
-      radial-gradient(1000px 800px at 5% 15%, rgba(53,201,244,0.18), transparent 50%),
+      radial-gradient(1000px 800px at 5% 15%, rgba(127,184,201,0.10), transparent 50%),
       radial-gradient(1100px 800px at 10% 110%, rgba(53,201,244,0.22), transparent 55%),
       var(--bg);
   }
+  
   .pf-root .pf-hub{
     background:
-      radial-gradient(1100px 800px at 20% 0%, rgba(255,159,28,0.28), transparent 52%),
-      radial-gradient(1100px 800px at 80% 0%, rgba(53,201,244,0.28), transparent 52%),
+      radial-gradient(1100px 800px at 20% 0%, rgba(227,164,88,0.13), transparent 52%),
+      radial-gradient(1100px 800px at 80% 0%, rgba(127,184,201,0.13), transparent 52%),
       var(--bg);
   }
+      
 
   /* -------- floating overlay icons (clap/camera/script/laptop/etc) -------- */
   .pf-float-icon{
@@ -176,7 +178,7 @@ const STYLES = `
   .pf-hub .hub-eyebrow{ justify-content:center; }
   .pf-hub .hub-eyebrow{ font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-dim); display:flex; align-items:center; gap:10px; }
   .pf-hub .hub-eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--amber); box-shadow:0 0 8px var(--amber); }
-  .pf-hub .hub-name{ font-size:clamp(2.4rem,6vw,4.2rem); text-transform:uppercase; margin-top:14px; }
+  .pf-hub .hub-name{ font-size:clamp(2.4rem,6vw,4.2rem); text-transform:uppercase; margin-top:14px;}
 
   .hub-split{ flex:1; display:grid; grid-template-columns:1fr 1fr; min-height:60vh; }
   @media (max-width:820px){ .hub-split{ grid-template-columns:1fr; } }
@@ -203,8 +205,8 @@ const STYLES = `
   .hub-panel .glow{
     position:absolute; inset:0; opacity:0; transition:opacity 0.5s ease;
   }
-  .hub-panel.film .glow{ background:radial-gradient(circle at 30% 30%, rgba(255,159,28,0.30), transparent 60%); }
-  .hub-panel.edit .glow{ background:radial-gradient(circle at 70% 30%, rgba(53,201,244,0.30), transparent 60%); }
+  .hub-panel.film .glow{ background:radial-gradient(circle at 30% 30%, rgba(227,164,88,0.14), transparent 60%); }
+  .hub-panel.edit .glow{ background:radial-gradient(circle at 70% 30%, rgba(127,184,201,0.14), transparent 60%); }
   .hub-panel:hover .glow{ opacity:1; }
 
   .hub-panel .tag{ font-family:'JetBrains Mono',monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:14px; position:relative; z-index:1; display:flex; align-items:center; gap:8px; }
@@ -242,10 +244,6 @@ const STYLES = `
   .film-hero .sub{ margin:26px auto 0; max-width:540px; color:var(--text-muted); font-size:clamp(1rem,2vw,1.25rem); }
   .film-hero .pf-eyebrow{ justify-content:center; }
   .film-hero .sub strong{ color:var(--text); font-weight:500; }
-
-  .letterbox{ position:fixed; left:0; right:0; height:0; background:#000; z-index:40; transition:height 1s cubic-bezier(.76,0,.24,1); pointer-events:none; }
-  .letterbox.top{ top:0; } .letterbox.bottom{ bottom:0; }
-  .letterbox.in{ height:5.5vh; }
 
   .film-about{ display:grid; grid-template-columns:1.2fr 1fr; gap:70px; }
   @media (max-width:820px){ .film-about{ grid-template-columns:1fr; } }
@@ -568,15 +566,11 @@ function Hub({ onEnter }) {
 
 function FilmSite({ goHub, goEdit }) {
   const reveal = useReveal();
-  const [boxIn, setBoxIn] = useState(false);
   const [activeVideo, setActiveVideo] = useState(null);
-  useEffect(() => { const t = setTimeout(() => setBoxIn(true), 300); return () => clearTimeout(t); }, []);
 
   return (
     <div className="film">
       <Lightbox project={activeVideo} onClose={() => setActiveVideo(null)} />
-      <div className={`letterbox top ${boxIn ? "in" : ""}`} />
-      <div className={`letterbox bottom ${boxIn ? "in" : ""}`} />
 
       <nav className="pf-nav">
         <div className="brand" onClick={goHub}><Clapperboard size={15} style={{ marginRight: 8, verticalAlign: -2 }} />Byrugonda Devender Teja</div>
