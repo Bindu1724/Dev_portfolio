@@ -5,16 +5,16 @@ import {
   Mail, MapPin, Laptop,
   Mic, Lightbulb, LayoutGrid, Monitor, Palette, Headphones, Clock,
 } from "lucide-react";
-import {FaInstagram, FaCamera} from "react-icons/fa";
+import {FaInstagram, FaFileAlt, FaCamera} from "react-icons/fa";
 
 /* ============================================================
    DATA — edit these arrays with your real projects/info
    ============================================================ */
 
 const FILM_PROJECTS = [
-  { title: "Unsaid", tc: "00:00:49", tag: "Promo", thumbnail: "", desc: "UNSAID is about love, regret, and the words we never found the courage to say. Sometimes, the past doesn’t stay behind… it keeps finding its way back.", video: "https://youtu.be/KVz92ECxSXM?si=QideMHZ634c3AkMq" },
-  { title: "Unsaid", tc: "00:01:03", tag: "Trailer", thumbnail: "", desc: "UNSAID is about love, regret, and the words we never found the courage to say. Sometimes, the past doesn’t stay behind… it keeps finding its way back.", video: "https://youtu.be/UC7OlbJkOHI?si=nyiUMhUZ-10qrJxR" },
-  { title: "Unsaid", tc: "00:21:25", tag: "Short Film", thumbnail: "", desc: "UNSAID is about love, regret, and the words we never found the courage to say. Sometimes, the past doesn’t stay behind… it keeps finding its way back.", video: "https://youtu.be/jBTIGMK4hYI?si=seKssqJe91LpQ-Wr" }
+  { title: "Unsaid", tc: "00:01:03", tag: "Trailer", thumbnail: "", desc: "A story of regret, guilt, and the memories he can’t escape.", video: "https://youtu.be/UC7OlbJkOHI?si=nyiUMhUZ-10qrJxR" },
+  { title: "Unsaid", tc: "00:21:25", tag: "Full Short Film", thumbnail: "", desc: "A psychological drama about regret, guilt, and confronting the mistakes of the past.", video: "https://youtu.be/jBTIGMK4hYI?si=seKssqJe91LpQ-Wr" },
+  { title: "Unsaid", tc: "00:00:49", tag: "Promo", thumbnail: "", desc: "A glimpse into the emotions, moments, and story behind UNSAID.", video: "https://youtu.be/KVz92ECxSXM?si=QideMHZ634c3AkMq" }
 ];
 
 // `video` accepts:
@@ -76,7 +76,7 @@ const STYLES = `
   }
   .pf-root *{ box-sizing:border-box; }
   .pf-root a{ color:inherit; text-decoration:none; }
-  .pf-root h1,.pf-root h2,.pf-root h3{ font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:0.02em; margin:0; }
+  .pf-root h1,.pf-root h2,.pf-root h3{ font-family:'Oswald',sans-serif; font-weight:400; letter-spacing:0.01em; margin:10px 0; }
   .pf-root .mono{ font-family:'JetBrains Mono', monospace; }
 
   .pf-root .film{
@@ -226,7 +226,7 @@ const STYLES = `
   .edit .pf-eyebrow .dot{ background:var(--ice); box-shadow:0 0 8px var(--ice); }
 
   /* -------- FILMMAKER SITE -------- */
-  .film-hero{ min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:120px 5vw 0; position:relative; overflow:hidden; }
+  .film-hero{ min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; 120px 5vw 0; position:relative; }
   .film-hero > *{ position:relative; z-index:1; }
   .film-hero.has-bg::before{
     content:''; position:absolute; inset:0; z-index:0;
@@ -240,7 +240,7 @@ const STYLES = `
   @keyframes pfKenBurns{ from{ transform:scale(1); } to{ transform:scale(1.07); } }
   @media (prefers-reduced-motion: reduce){ .film-hero.has-bg::before, .edit-hero.has-bg::before{ animation:none; } }
   .film-hero h1{ font-size:clamp(3rem,10vw,7.6rem); line-height:0.92; text-transform:uppercase; }
-  .film-hero h1 .stroke{ color:transparent; -webkit-text-stroke:1.5px var(--text); }
+  .film-hero h1 .stroke{ color:transparent; -webkit-text-stroke:1.1px var(--text); }
   .film-hero .sub{ margin:26px auto 0; max-width:540px; color:var(--text-muted); font-size:clamp(1rem,2vw,1.25rem); }
   .film-hero .pf-eyebrow{ justify-content:center; }
   .film-hero .sub strong{ color:var(--text); font-weight:500; }
@@ -272,7 +272,7 @@ const STYLES = `
   .film-card .desc{ color:var(--text-muted); font-size:0.9rem; margin-top:8px; }
 
   /* -------- EDITOR SITE -------- */
-  .edit-hero{ min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:120px 5vw 0; position:relative; overflow:hidden; }
+  .edit-hero{ min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:5vw 0; position:relative; overflow:hidden; }
   .edit-hero > *{ position:relative; z-index:1; }
   .edit-hero.has-bg::before{
     content:''; position:absolute; inset:0; z-index:0;
@@ -288,7 +288,7 @@ const STYLES = `
   .edit-hero .pf-eyebrow{ justify-content:center; }
   .edit-hero .sub strong{ color:var(--text); font-weight:500; }
 
-  .timeline{ margin:60px auto 0; max-width:480px; position:relative; height:2px; background:var(--line); width:100%; }
+  .timeline{ margin:10px auto 120px; max-width:480px; position:relative; height:2px; background:var(--line); width:100%; }
   .timeline .playhead{ position:absolute; top:-5px; width:12px; height:12px; border-radius:50%; background:var(--ice); box-shadow:0 0 10px var(--ice); animation:scrub 7s linear infinite; }
   @keyframes scrub{ 0%{ left:0%; } 50%{ left:calc(100% - 12px); } 100%{ left:0%; } }
   @media (prefers-reduced-motion: reduce){ .timeline .playhead{ animation:none; left:0; } }
@@ -345,6 +345,11 @@ const STYLES = `
     transition:color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
   }
   .pf-contact .instagram-link:hover{ color:#ff8fb0; transform:translateX(4px); text-shadow:0 0 18px rgba(255,143,176,0.6); }
+  .pf-contact .resume-link{
+    color:#ff4f81; font-weight:500; text-shadow:0 0 14px rgba(255,79,129,0.35);
+    transition:color 0.2s ease, transform 0.2s ease, text-shadow 0.2s ease;
+  }
+  .pf-contact .resume-link:hover{ color:#ff8fb0; transform:translateX(4px); text-shadow:0 0 18px rgba(255,143,176,0.6); }
 
   .pf-footer{ padding:26px 5vw; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; font-family:'JetBrains Mono',monospace; font-size:0.66rem; color:var(--text-dim); }
 
@@ -432,7 +437,7 @@ const FILM_ICONS_CONTACT = [
 // Editing set: Editing Laptop, Editing Monitor, Timeline/Cut, Color Wheel, Headphones, Timecode
 const EDIT_ICONS_HERO = [
   { Icon: Scissors, top: "14%", left: "90%", size: 54, rot: 16, delay: 0 },
-  { Icon: Laptop, top: "72%", left: "9%", size: 48, rot: -10, delay: 1.2 },
+  { Icon: Laptop, top: "28%", left: "16%", size: 48, rot: -10, delay: 1.2 },
   { Icon: Headphones, top: "80%", left: "84%", size: 40, rot: -6, delay: 0.7 },
   { Icon: Clock, top: "24%", left: "6%", size: 36, rot: 8, delay: 2 },
 ];
@@ -584,8 +589,7 @@ function FilmSite({ goHub, goEdit }) {
         <FloatingIcons items={FILM_ICONS_HERO} />
         <div className="pf-eyebrow"><span className="dot" /> <Clapperboard size={15} /> Independent Filmmaker</div>
         <h1>Devender Teja<br /><span className="stroke">Byrugonda</span></h1>
-        <p className="sub">I direct short-form independent films — narrative and documentary —
-          shaped as much on set as in the edit that follows.</p>
+        <p className="sub">Independent filmmaker and storyteller, crafting cinematic stories my own way.</p>
       </section>
 
       <div className="pf-divider"><div className="holes"><Holes /></div><span className="label">Reel 01 / About</span></div>
@@ -600,11 +604,7 @@ function FilmSite({ goHub, goEdit }) {
         <div className="film-about">
           <div>
             <h2 style={{ fontSize: "clamp(1.8rem,3vw,2.6rem)", textTransform: "uppercase", marginBottom: 24 }}>On &amp; Off Set</h2>
-            <p>I make <strong>narrative shorts and documentary work</strong> that starts with a real place or a real
-              person, not a concept. Most of what a film says gets decided twice — once with the camera, once in the cut.</p>
-            <p>I write, direct, and often shoot my own projects, working with a small trusted crew and non-actors
-              where the story calls for it.</p>
-            <p>Based in <strong>Hyderabad</strong> — available for narrative, documentary, and collaborative work.</p>
+            <p>I’m an independent filmmaker and storyteller with a passion for creating unique and cinematic stories. I love exploring emotions, relationships, and new ideas through film. Every project is an opportunity to try something different, tell a story in my own way, and keep growing as a filmmaker.</p>
           </div>
           <div className="film-credits">
             <div className="row"><span className="k">Roles</span><span className="v">Director / Writer / DOP / Editor / Cinematography</span></div>
@@ -696,8 +696,7 @@ function EditSite({ goHub, goFilm }) {
         <FloatingIcons items={EDIT_ICONS_HERO} />
         <div className="pf-eyebrow"><span className="dot" /> <Scissors size={15} /> Video Editor</div>
         <h1>Cut. Paced.<br />Precise.</h1>
-        <p className="sub">I edit story-driven video — narrative, documentary, and brand work —
-          where <strong>pacing and sound design</strong> do the final act of storytelling.</p>
+        <p className="sub">I turn raw footage into stories that move. Video editor specializing in short-form content, motion graphics, and brand visuals.</p>
         <div className="timeline">
           <div className="playhead" />
           <div className="ticks"><span>00:00:00</span><span>00:07:30</span><span>00:15:00</span></div>
@@ -716,11 +715,7 @@ function EditSite({ goHub, goFilm }) {
         <div className="edit-about">
           <div>
             <h2 style={{ fontSize: "clamp(1.8rem,3vw,2.6rem)", textTransform: "uppercase", marginBottom: 24 }}>In the Timeline</h2>
-            <p>I cut <strong>narrative shorts, documentary, and commissioned brand work</strong> — usually stepping
-              in once footage is shot, sometimes editing my own projects start to finish.</p>
-            <p>My process favours a fast assembly, then slow, deliberate refinement — rhythm, sound, and colour
-              pulled tight over several passes until a cut earns its length.</p>
-            <p>Based in <strong>Hyderabad</strong> — available for freelance and ongoing post work.</p>
+            <p>Video editor with hands-on experience across short-form and long-form content — YouTube videos, Instagram Reels, and brand visuals. I work primarily in Premiere Pro and After Effects, building motion graphics, logo intros, and edits built for pacing and impact. My path includes a professional internship in video editing and freelance work with creators and brands, always focused on delivering content that connects with an audience.</p>
           </div>
           <div className="film-credits">
             <div className="row"><span className="k">Role</span><span className="v">Editor</span></div>
@@ -799,9 +794,11 @@ function EditSite({ goHub, goFilm }) {
         <h2>Send the<br />Footage.</h2>
         <a className="email mono" href="mailto:deventej24@gmail.com">deventej24@gmail.com</a>
         <div className="row">
+          <div className="col"><div className="k">Resume</div><a className="resume-link" href="/Video%20Editor_24.pdf" target="_blank" ><FaFileAlt size={15} />View Resume</a></div>
           <div className="col"><div className="k">Elsewhere</div><a className="instagram-link" href="https://www.instagram.com/deven24_/"><FaInstagram size={15} /> Instagram ↗</a></div>
           <div className="col"><div className="k">Based in</div><span><MapPin size={15} /> Hyderabad, India</span></div>
         </div>
+        
       </section>
 
       <footer className="pf-footer">
